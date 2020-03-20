@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Monsters</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
 </head>
-<body>
-    <div id="app">
-        
+
+<body class="border-t-8 border-solid border-green-500">
+    <div id="app" class="container mx-auto">
+        <h1 class="text-6xl font-bold  text-center text-green-500">Vue Monsters</h1>
+        <div class="grid grid-cols-2 gap-4">
+            <h2 class="grid justify-center text-4xl">You</h2>
+            <h2 class="grid justify-center text-4xl">Monster</h2>
+            <div :style="playerProgress" class="grid justify-center w-full h-8  bg-green-500 rounded "></div>
+            <div :style="monsterProgress" class="grid justify-center w-full h-8  bg-red-700 rounded "></div>
+            <div v-if="inPlay  && !gameOver" class="grid justify-center col-span-2 py-4 rounded shadow-lg">
+                <div>
+                    <button @click="attack" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Attack</button>
+                    <button @click="special" :disabled="specialAttack === 0 ? true : false" :class="disableSpecial" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Special</button>
+                    <span class="inline-block rounded-full h-5 w-5 text-xs text-center bg-green-400">{{specialAttack}}</span>
+                    <button @click="heal" :disabled="healings === 0 ? true : false" :class="disableHealing" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Heal</button>
+                    <span class="inline-block rounded-full h-5 w-5 text-xs text-center bg-green-400">{{healings}}</span>
+                    <button @click="restart" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Give Up</button>
+                </div>
+            </div>
+            <div v-else-if="inPlay  && gameOver !=true" class="grid justify-center col-span-2 py-4 rounded shadow-lg">
+                <p class="grid justify-center text-4xl">{{gameOver}}</p>
+                <button @click="restart" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Play again</button>
+            </div>
+            <div v-else class="grid justify-center col-span-2 py-4 rounded shadow-lg">
+                <button @click="inPlay = true" class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Start New Game</button>
+            </div>
+            <div v-if="inPlay && !gameOver" class="grid justify-center col-span-2 py-4 rounded shadow-lg">
+                <div v-for='(attack,index) in attacks'>
+                    <span class="font-bold">Round {{index+1}}</span>
+                    <span class="text-green-700">Player hit {{attack.user}}</span> -
+                    <span class="text-red-700">Monster hit {{attack.monster}}</span></div>
+            </div>
+        </div>
     </div>
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
