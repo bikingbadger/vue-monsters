@@ -15,8 +15,11 @@
         <div class="grid grid-cols-2 gap-4">
             <h2 class="grid justify-center text-4xl">You</h2>
             <h2 class="grid justify-center text-4xl">Monster</h2>
-            <div class="grid justify-center"><img class="h-12" :class="bouncePlayer" src="player.jpg" alt="Player Image"></div>
-            <div class="grid justify-center"><img class="h-12" :class="bounceMonster" src="monster.jpg" alt="Player Image"></div>
+            <div class="grid justify-center col-span-2 grid-cols-3 py-4 rounded shadow-lg">
+                <div class="grid justify-center"><img class="h-24" :class="bouncePlayer" src="player.jpg" alt="Player Image"></div>
+                <div class="grid justify-center"><img class="h-24" :class="fightScene" src="explosion.png" alt="Player Image"></div>
+                <div class="grid justify-center"><img class="h-24" :class="bounceMonster" src="monster.jpg" alt="Player Image"></div>
+            </div>
             <div :style="playerProgress" class="grid justify-center w-full h-8  bg-green-500 rounded trans-smooth"></div>
             <div :style="monsterProgress" class="grid justify-center w-full h-8  bg-red-700 rounded "></div>
             <div v-if="inPlay  && !gameOver" class="grid justify-center col-span-2 py-4 rounded shadow-lg">

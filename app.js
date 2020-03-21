@@ -36,20 +36,23 @@ new Vue({
       };
     },
     gameOver: function() {
-      if ((this.playerPower <= 0) && (this.monsterPower <= 0))return 'Draw';
+      if (this.playerPower <= 0 && this.monsterPower <= 0) return 'Draw';
       if (this.playerPower <= 0) return 'Monster Won';
       if (this.monsterPower <= 0) return 'You Won';
 
       return false;
     },
     bounceMonster: function() {
-      if ((this.playerPower <= 0) && (this.monsterPower <= 0))return false;
-      if (this.playerPower <= 0) return { 'bounce': true,'animated': true };
+      if (this.playerPower <= 0 && this.monsterPower <= 0) return false;
+      if (this.playerPower <= 0) return { bounce: true, animated: true };
       return false;
     },
     bouncePlayer: function() {
-      if (this.monsterPower <= 0) return { 'bounce': true,'animated': true};
+      if (this.monsterPower <= 0) return { bounce: true, animated: true };
       return false;
+    },
+    fightScene: function() {
+      return { hidden: true };
     },
   },
   methods: {
@@ -57,7 +60,8 @@ new Vue({
       this.attacks.push({ user: playerHit, monster: monsterHit });
     },
     getHit: function(power) {
-      return Math.floor(Math.random() * power);
+      const min =3;
+      return Math.max(min,Math.floor(Math.random() * power));
     },
     attack: function() {
       const playerHit = this.getHit(10);
