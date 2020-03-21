@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue Monsters</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="border-t-8 border-solid border-green-500">
@@ -14,9 +15,9 @@
         <div class="grid grid-cols-2 gap-4">
             <h2 class="grid justify-center text-4xl">You</h2>
             <h2 class="grid justify-center text-4xl">Monster</h2>
-            <div class="grid justify-center"><img class="h-12" src="player.jpg" alt="Player Image"></div>
-            <div class="grid justify-center"><img class="h-12" src="monster.jpg" alt="Player Image"></div>
-            <div :style="playerProgress" class="grid justify-center w-full h-8  bg-green-500 rounded "></div>
+            <div class="grid justify-center"><img class="h-12" :class="bouncePlayer" src="player.jpg" alt="Player Image"></div>
+            <div class="grid justify-center"><img class="h-12" :class="bounceMonster" src="monster.jpg" alt="Player Image"></div>
+            <div :style="playerProgress" class="grid justify-center w-full h-8  bg-green-500 rounded trans-smooth"></div>
             <div :style="monsterProgress" class="grid justify-center w-full h-8  bg-red-700 rounded "></div>
             <div v-if="inPlay  && !gameOver" class="grid justify-center col-span-2 py-4 rounded shadow-lg">
                 <div>

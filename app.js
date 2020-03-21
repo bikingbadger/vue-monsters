@@ -36,9 +36,18 @@ new Vue({
       };
     },
     gameOver: function() {
+      if ((this.playerPower <= 0) && (this.monsterPower <= 0))return 'Draw';
       if (this.playerPower <= 0) return 'Monster Won';
       if (this.monsterPower <= 0) return 'You Won';
 
+      return false;
+    },
+    bounceMonster: function() {
+      if (this.playerPower <= 0) return { 'bounce': true,'animated': true };
+      return false;
+    },
+    bouncePlayer: function() {
+      if (this.monsterPower <= 0) return { 'bounce': true,'animated': true};
       return false;
     },
   },
