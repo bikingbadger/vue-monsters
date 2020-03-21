@@ -43,6 +43,7 @@ new Vue({
       return false;
     },
     bounceMonster: function() {
+      if ((this.playerPower <= 0) && (this.monsterPower <= 0))return false;
       if (this.playerPower <= 0) return { 'bounce': true,'animated': true };
       return false;
     },
