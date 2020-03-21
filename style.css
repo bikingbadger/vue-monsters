@@ -72,3 +72,33 @@
     animation-fill-mode: both;
     animation-iteration-count: infinite;
   }
+
+  .playerFight {
+    animation-duration: 3s;
+    animation-name: moveRight;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes moveRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100px);
+    }
+  }
+
+  .monsterFight {
+    animation-duration: 3s;
+    animation-name: moveRight;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes moveLeft {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100px);
+    }
+  }

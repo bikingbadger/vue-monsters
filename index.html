@@ -16,7 +16,7 @@
             <h2 class="grid justify-center text-4xl">You</h2>
             <h2 class="grid justify-center text-4xl">Monster</h2>
             <div class="grid justify-center col-span-2 grid-cols-3 py-4 rounded shadow-lg">
-                <div class="grid justify-center"><img class="h-24" :class="bouncePlayer" src="player.jpg" alt="Player Image"></div>
+                <div class="grid justify-center"><img class="h-24" :class="[bouncePlayer,playerFight]" src="player.jpg" alt="Player Image"></div>
                 <div class="grid justify-center"><img class="h-24" :class="fightScene" src="explosion.png" alt="Player Image"></div>
                 <div class="grid justify-center"><img class="h-24" :class="bounceMonster" src="monster.jpg" alt="Player Image"></div>
             </div>
